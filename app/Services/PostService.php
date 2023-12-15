@@ -16,4 +16,8 @@ class PostService
     public function delete(Post $post){
         return $post->delete();
     }
+
+    public function restore(Post $post){
+        return $post->restore();
+    }
 }
