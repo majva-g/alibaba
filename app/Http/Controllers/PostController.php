@@ -77,4 +77,12 @@ class PostController extends Controller
         $this->postService->restore($post);
         return redirect()->route('posts.index');
     }
+
+    /**
+     * Toggle the specified resource from storage.
+     */     
+    public function togglePublish(Post $post){
+        $this->postService->togglePublish($post);
+        return redirect()->back();
+    }
 }
