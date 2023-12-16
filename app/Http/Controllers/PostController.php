@@ -69,4 +69,12 @@ class PostController extends Controller
         $this->postService->delete($post);
         return redirect()->route('posts.index');
     }
+
+    /**
+     * Restore the specified resource from storage.
+     */
+    public function restore(Post $post){
+        $this->postService->restore($post);
+        return redirect()->route('posts.index');
+    }
 }
