@@ -66,6 +66,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $this->postService->delete($post);
+        return redirect()->route('posts.index');
     }
 }
