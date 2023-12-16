@@ -6,27 +6,27 @@ use App\Models\Post;
 
 class PostService
 {
-    public function create(array $data)
+    public function create(array $data): Post
     {
         return Post::create($data);
     }
 
-    public function update(Post $post, array $data)
+    public function update(Post $post, array $data): bool
     {
         return $post->update($data);
     }
 
-    public function delete(Post $post)
+    public function delete(Post $post): bool
     {
         return $post->delete();
     }
 
-    public function restore(Post $post)
+    public function restore(Post $post): bool
     {
         return $post->restore();
     }
 
-    public function togglePublish(Post $post)
+    public function togglePublish(Post $post): bool
     {
         return $this->update($post, ['published' => !$post->published]);
     }
