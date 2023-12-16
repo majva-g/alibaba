@@ -57,7 +57,8 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $this->postService->update($post, $request->validated());
+        return redirect()->route('posts.index');
     }
 
     /**
