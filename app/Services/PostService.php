@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Collection;
 
 class PostService
 {
@@ -29,5 +30,9 @@ class PostService
     public function togglePublish(Post $post): bool
     {
         return $this->update($post, ['published' => !$post->published]);
+    }
+
+    public function getAll():Collection{
+        return Post::all();
     }
 }
