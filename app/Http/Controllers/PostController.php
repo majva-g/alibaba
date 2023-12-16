@@ -85,4 +85,13 @@ class PostController extends Controller
         $this->postService->togglePublish($post);
         return redirect()->back();
     }
+
+    /**
+     * Get all trashed posts
+     */   
+    public function getTrashedPosts()
+    {
+        $posts = $this->postService->getTrashed();
+        return view('posts.index', compact('posts'));
+    }
 }
