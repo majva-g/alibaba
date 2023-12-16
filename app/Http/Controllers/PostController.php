@@ -32,7 +32,8 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $this->postService->create($request->validated());
+        return redirect()->route('posts.index');
     }
 
     /**
