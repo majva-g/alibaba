@@ -35,4 +35,8 @@ class PostService
     public function getAll():Collection{
         return Post::all();
     }
+
+    public function getTrashed():Collection{
+        return Post::onlyTrashed()->get();
+    }
 }
