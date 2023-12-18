@@ -14,7 +14,9 @@ class PostService
 
     public function update(Post $post, array $data): bool
     {
+        $data['published'] = false;
         return $post->update($data);
+     
     }
 
     public function delete(Post $post): bool
@@ -29,7 +31,7 @@ class PostService
 
     public function togglePublish(Post $post): bool
     {
-        return $this->update($post, ['published' => !$post->published]);
+        return $post->update(['published' => !$post->published]);
     }
 
     public function getAll():Collection{
