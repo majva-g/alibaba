@@ -24,6 +24,7 @@ class StorePostRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255','min:3'],
             'content' => ['required', 'string', 'max:255','min:3'],
+            'published_at' => ['required', 'date'],
         ];
     }
 }
