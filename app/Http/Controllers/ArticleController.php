@@ -35,7 +35,7 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {
         $this->articleService->create($request->validated());
-        return redirect()->route('articles.index');
+        return redirect()->route('articles.index')->with('success', 'Article created successfully');
     }
 
     /**
@@ -60,7 +60,7 @@ class ArticleController extends Controller
     public function update(UpdateArticleRequest $request, Article $article)
     {
         $this->articleService->update($article, $request->validated());
-        return redirect()->route('articles.index');
+        return redirect()->route('articles.index')->with('success', 'Article updated successfully');
     }
 
     /**
@@ -69,7 +69,7 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $this->articleService->delete($article);
-        return redirect()->route('articles.index');
+        return redirect()->route('articles.index')->with('success', 'Article deleted successfully');
     }
 
     /**
@@ -77,7 +77,7 @@ class ArticleController extends Controller
      */
     public function restore(Article $article){
         $this->articleService->restore($article);
-        return redirect()->route('articles.index');
+        return redirect()->route('articles.trashed')->with('success', 'Article restored successfully');
     }
 
     /**
@@ -96,6 +96,6 @@ class ArticleController extends Controller
     {
         $this->authorize('viewTrashed', Article::class);
         $articles = $this->articleService->getTrashed();
-        return view('articles.index', compact('articles'));
+        return view('articles.trashed', compact('articles'));
     }
 }
