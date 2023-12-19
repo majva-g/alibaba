@@ -35,7 +35,7 @@ class ArticleService
     }
 
     public function getAll():Collection{
-        return Article::all();
+        return Article::with('user')->get();
     }
 
     public function getTrashed():Collection{

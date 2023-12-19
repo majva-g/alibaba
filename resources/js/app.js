@@ -1,9 +1,9 @@
-import './bootstrap';
+import "./bootstrap";
 
-import Alpine from 'alpinejs';
-import { Input,Datepicker, initTE } from "tw-elements";
+import Alpine from "alpinejs";
+import { Input, Datepicker, Modal, Ripple, initTE } from "tw-elements";
 
-initTE({ Input, Datepicker });
+initTE({ Input, Datepicker, Modal, Ripple });
 
 window.Alpine = Alpine;
 
