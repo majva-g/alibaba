@@ -14,7 +14,9 @@ class ArticleService
 
     public function update(Article $article, array $data): bool
     {
-        $data['published'] = false;
+        if(!auth()->user()->is_admin){
+            $data['published'] = false;
+        }
         return $article->update($data);
      
     }
