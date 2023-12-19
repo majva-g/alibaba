@@ -41,6 +41,6 @@ class ArticleService
     }
 
     public function getTrashed():Collection{
-        return Article::onlyTrashed()->get();
+        return Article::onlyTrashed()->with('user')->get();
     }
 }
