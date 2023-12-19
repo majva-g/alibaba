@@ -9,7 +9,7 @@ class ArticleService
 {
     public function create(array $data): Article
     {
-        return Article::create($data);
+       return  auth()->user()->articles()->create($data);
     }
 
     public function update(Article $article, array $data): bool
