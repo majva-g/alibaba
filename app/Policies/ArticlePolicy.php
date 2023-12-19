@@ -37,7 +37,7 @@ class ArticlePolicy
      */
     public function update(User $user, Article $article): bool
     {
-        return $user->id === $article->user_id;
+        return true;
     }
 
     /**
@@ -56,4 +56,13 @@ class ArticlePolicy
         return $user->is_admin;
     }
 
+    public function publish(User $user, Article $article): bool
+    {
+        return $user->is_admin;
+    }
+
+    public function viewTrashed(User $user, Article $article): bool
+    {
+        return $user->is_admin;
+    }
 }
