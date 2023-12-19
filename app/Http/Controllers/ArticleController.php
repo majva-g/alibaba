@@ -9,7 +9,9 @@ use App\Services\ArticleService;
 
 class ArticleController extends Controller
 {
-    public function __construct(private ArticleService $articleService){}
+    public function __construct(private ArticleService $articleService){
+        $this->authorizeResource(Article::class, 'article');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -82,8 +84,9 @@ class ArticleController extends Controller
      * Toggle the specified resource from storage.
      */     
     public function togglePublish(Article $article){
+        $this->authorize('publish', $article);
         $this->articleService->togglePublish($article);
-        return redirect()->back();
+        return response()->json(['success', 'Article published toggled successfully']);
     }
 
     /**
@@ -91,6 +94,7 @@ class ArticleController extends Controller
      */   
     public function getTrashedArticles()
     {
+        $this->authorize('viewTrashed', Article::class);
         $articles = $this->articleService->getTrashed();
         return view('articles.index', compact('articles'));
     }
