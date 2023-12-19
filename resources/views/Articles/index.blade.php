@@ -1,4 +1,4 @@
-<x-app-layout>
+{{-- <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
@@ -62,7 +62,7 @@
                                                     @method('delete')
                                                 <button type="submit"
                                                     class=" items-right font-medium text-red-600 dark:red-500 hover:underline"
-                                                    {{-- data-te-toggle="modal" data-te-target="#exampleModal" --}} onclick="deleteArticle({{ $article->id }})"
+    
                                                     data-te-ripple-init data-te-ripple-color="light">
                                                     delete
                                                 </button>
@@ -82,5 +82,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
-
+</x-app-layout> --}}
