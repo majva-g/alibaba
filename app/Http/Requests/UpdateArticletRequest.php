@@ -25,6 +25,7 @@ class UpdateArticleRequest extends FormRequest
             'title' => ['required', 'string', 'max:255','min:3'],
             'content' => ['required', 'string', 'max:255','min:3'],
             'published_at' => ['required', 'date'],
+            'published' => ['required', 'boolean'],
         ];
     }
 }
