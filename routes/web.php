@@ -36,6 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/articles/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
     Route::put('/articles/{article}', [ArticleController::class, 'update'])->name('articles.update');
     Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+    Route::get('/articles/{article}/restore', [ArticleController::class, 'restore'])->name('articles.restore');
+    Route::get('/articles/{article}/trashed', [ArticleController::class, 'getTrashedArticles'])->name('articles.trashed');
+    Route::get('/articles/{article}/toggle-publish', [ArticleController::class, 'togglePublish'])->name('articles.toggle-publish');
 
 });
 
