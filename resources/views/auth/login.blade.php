@@ -47,7 +47,6 @@
                 <label for="password">کلمه عبور <span class="text-danger">*</span></label>
                 <input type="password" class="form-control text-right" name="password" id="password" dir="ltr"
                     required>
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
             <div class="form-group d-sm-flex justify-content-between text-left mb-4">
                 <div class="custom-control custom-checkbox">
