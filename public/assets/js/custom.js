@@ -35,4 +35,16 @@ $(document).ready(function () {
             firstDay: 6,
         },
     });
+
+    $("input[type='checkbox']").change(function () {
+        const isChecked = $(this).is(":checked");
+        const elementName = $(this).attr("id");
+        if (isChecked) {
+            $(this).val("1");
+            $('input[name="' + elementName + '"]').val("1");
+        } else {
+            $('input[name="' + elementName + '"]').val("0");
+            $(this).val("0");
+        }
+    });
 });
