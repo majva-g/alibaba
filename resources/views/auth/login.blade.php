@@ -1,47 +1,76 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+    <title>علی بابا</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/media/image/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/media/image/favicon.png') }}" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0D6F31">
+
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="{{ asset('vendors/bundle.css') }}" type="text/css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" type="text/css">
+</head>
+
+<body class="form-membership">
+
+    <div class="form-wrapper">
+
+        <!-- logo -->
+        <div class="logo">
+            <img src="assets/media/image/logo-sm.png" alt="image">
         </div>
+        <!-- ./ logo -->
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        <h5>ورود</h5>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+        <!-- form -->
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <div class="form-group text-left">
+                <label for="email">نام کاربری <span class="text-danger">*</span></label>
+                <input type="text" class="form-control text-right" dir="ltr" name="email" id="email"
+                    required autofocus>
+            </div>
+            <div class="form-group text-left">
+                <label for="password">کلمه عبور <span class="text-danger">*</span></label>
+                <input type="password" class="form-control text-right" name="password" id="password" dir="ltr"
+                    required>
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            </div>
+            <div class="form-group d-sm-flex justify-content-between text-left mb-4">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" checked id="remember" name="remember">
+                    <label class="custom-control-label" for="remember">به خاطر سپاری</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">ورود</button>
+        </form>
+        <!-- ./ form -->
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+    </div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+    <!-- Plugin scripts -->
+    <script src="{{ asset('vendors/bundle.js') }}"></script>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+    <!-- App scripts -->
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    <!-- begin::flash messages -->
+    <x-flash-message-success />
+    <x-flash-message-error />
+    <!-- end::flash messages -->
+</body>
+
+</html>
